@@ -1,7 +1,0 @@
----
-# defaults file for cassandra
-
-cassandra_apt_serie: "311x" 
-cassandra_apt_src: false
-cassandra_config: {}
-
