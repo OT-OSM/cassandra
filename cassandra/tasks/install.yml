@@ -1,0 +1,19 @@
+---
+- name: Install required packages
+  apt:
+    pkg: ['ca-certificates', 'gnupg']
+
+- name: Add cassandra key
+  apt_key:
+    url: "https://www.apache.org/dist/cassandra/KEYS"
+
+- name: Add cassandra repo
+  apt_repository:
+    repo: "deb http://www.apache.org/dist/cassandra/debian {{ cassandra_apt_serie }} main"
+    filename: "cassandra_{{ cassandra_apt_serie }}"
+
+- name: Install cassandra
+  apt:
+    pkg: ['cassandra', 'cassandra-tools']
+    state: present
+
