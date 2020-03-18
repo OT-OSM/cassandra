@@ -1,0 +1,29 @@
+#task Main file variable
+cassandra_version: 3.11.0
+cassandra_download_url: https://archive.apache.org/dist/cassandra/{{ cassandra_version }}/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
+#apache_checksum_url: https://archive.apache.org/dist/cassandra/{{ cassandra_version }}/apache-cassandra-{{ cassandra_version }}-bin.tar.gz.sha1
+
+
+cluster_name: MyCluster
+
+#Directory locations
+cassandra_home: /opt/cassandra 
+cassandra_path: /opt/cassandra/bin
+cassandra_data_directory: /opt/cassandra/data
+cassandra_hints_directory: /opt/cassandra/data/hints
+cassandra_commitlog_directory: /opt/cassandra/data/commitlogs
+cassandra_saved_caches_directory: /opt/cassandra/data/saved_caches
+
+#cassandra_seeds_resolved: "{{ groups['seed-nodes'] | map('extract', hostvars, ['ansible_eth0', 'ipv4', 'address']) | join(',') }}"
+
+#For IP Address configuration in YML
+broadcast_address: "{{ ansible_default_ipv4.address }}"
+listen_address: "{{ ansible_default_ipv4.address }}"
+broadcast_rpc_address: "{{ ansible_default_ipv4.address }}" 
+#rpc_address: "{{ ansible_default_ipv4.address }}"
+
+#Port configurations
+cassandra_port: 9042
+rpc_port: 9160
+storage_port: 7000
+ssl_storage_port: 7001
