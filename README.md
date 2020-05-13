@@ -5,11 +5,7 @@ Ansible Role: Cassandra_cluster
 
   [opstree_homepage]: https://opstree.github.io/
   [opstree_avatar]: https://img.cloudposse.com/150x150/https://github.com/opstree.png
-An ansible role to install cassandra cluster.
-
-Key Features
-------------
-Standalone setup Cassandra db setup
+An ansible role to install cassandra cluster & standalone cassandra.
 
 Supported OS
 ------------
@@ -19,7 +15,6 @@ Supported OS
 Requirements
 ------------
   * Java 1.8
-  * Python2.7
 
 Role Variables
 --------------
