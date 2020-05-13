@@ -35,10 +35,10 @@ Role Variables
 | broadcast_rpc_address | node ipv4 ip | node ipv4 ip | RPC address to broadcast to drivers and other Cassandra nodes. This cannot be set to 0.0.0.0. If left blank, this will be set to the value of rpc_address. If rpc_address is set to 0.0.0.0, broadcast_rpc_address must be set. |
 | rpc_address | node ipv4 ip | node ipv4/ipv6 ip | If you choose to specify the interface by name and the interface has an ipv4 and an ipv6 address you can specify which should be chosen using rpc_interface_prefer_ipv6. If false the first ipv4 address will be used. If true the first ipv6 address will be used. Defaults to false preferring ipv4. If there is only one address it will be selected regardless of ipv4/ipv6. |
 | cassandra_local_hostname | node ipv4 ip | node ipv4 ip | Node ipv4 address from which we connect db using shell  |
-| cassandra_admin_user | admin | Any admin user | Cassandra admin user name which we want to create in db |
-| cassandra_admin_password | admin | Any admin password | Cassandra admin password |
+| cassandra_admin_user | admin | Any admin user | New cassandra admin user |
+| cassandra_admin_password | admin | Any admin password |New cassandra admin password |
 | cassandra_old_admin_password | cassandra | cassandra | Default cassandra password |
-| cassandra_old_admin_user | cassandra | cassandra | Default Cassandra user who is already there |
+| cassandra_old_admin_user | cassandra | cassandra | Default Cassandra user |
 | authorization_enable | yes | yes or no | Enabled, when we want to change default username or password |
 | cassandra_port | 9042 | Any Linux port | Assign a port to connect with cassandra |
 | rpc_port | 9160 | Any Linux port | Port for Thrift to listen for clients on |
