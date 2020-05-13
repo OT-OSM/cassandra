@@ -72,17 +72,16 @@ osm_cassandra
     └── main.yml
 
 5 directories, 10 files
-
+```
 Example Playbook
 ----------------
 ```
----
 - name: It will automate Cassandra setup
   hosts: seed-nodes
   become: true
   roles:
     - role: osm_cassandra
-...
+```
 
 Inventory
 ----------
