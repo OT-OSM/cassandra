@@ -15,14 +15,15 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 APPDIR="/opt/cassandra"
 APPBIN="/opt/cassandra/bin/cassandra"
 APPARGS="-R"
-USER="root"
-GROUP="root"
+USER="{{ user_name }}"
+GROUP="{{ group_name }}"
 
 # Include functions 
 set -e
 . /lib/lsb/init-functions
 
 start() {
+  export JVM_OPTS="$JVM_OPTS -Djna.tmpdir=/var/lib/cassandra/tmp"
   printf "Starting '$NAME'... "
   start-stop-daemon --start --chuid "$USER:$GROUP" --background --make-pidfile --pidfile /var/run/$NAME.pid --chdir "$APPDIR" --exec "$APPBIN" -- $APPARGS || true
   printf "done\n"
