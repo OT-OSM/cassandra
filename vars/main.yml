@@ -4,6 +4,7 @@ cassandra_version: 3.11.6
 cassandra_download_url: https://archive.apache.org/dist/cassandra/{{ cassandra_version }}/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
 cluster_name: MyCluster
 cassandra_node_count: 3
+vm.max_map_count: 1048575
 
 #User and Group for cassandra
 user_name: cassandra

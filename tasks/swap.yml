@@ -12,5 +12,5 @@
 - name: Increase the vm.max_map_count
   sysctl:
     name: vm.max_map_count
-    value: "1048575"
+    value: "{{ vm.max_map_count }}"
     state: present
