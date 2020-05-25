@@ -15,18 +15,20 @@
   apt:
     name: python
     state: present
+    update_cache: yes
 
 - name: Include swap setup tasks
   include_tasks: swap.yml
  
-- stat: 
-    path: /opt/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
+- name: check cassandra source file
+  stat: 
+    path: /tmp/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
   register: cassandra_source_file
   
 - name: download the source
   get_url: 
-    url: "{{ cassandra_download_url }}"
-    dest: /opt/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
+    url: "{{ cassandra_basic_url }}{{ cassandra_download_url }}"
+    dest: /tmp/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
     owner: "{{ user_name }}"
     group: "{{ group_name }}"
     mode: 0755
@@ -42,7 +44,7 @@
 
 - name: Extract cassandra source
   unarchive:
-    src: /opt/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
+    src: /tmp/apache-cassandra-{{ cassandra_version }}-bin.tar.gz
     dest: "{{ cassandra_home }}"
     owner: "{{ user_name }}"
     group: "{{ group_name }}"
@@ -81,7 +83,10 @@
     owner: root
     group: root
     mode: 0755
-  
+  # notify: 
+  #   - stop cassandra service
+  #   - start cassandra service
+     
 - name: Enable the daemon
   shell: update-rc.d cassandra "{{ item }}"
   with_items:
@@ -98,7 +103,12 @@
     name: cassandra 
     state: started
 
-- name: Include authorization setup tasks
+#- name: flush handlers
+#-  meta: flush_handlers
+      #- stop cassandra service
+      #- start cassandra service
+
+- name: Include cluster status check
   include_tasks: cluster_status.yml
 
 - name: Include authorization setup tasks

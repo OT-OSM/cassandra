@@ -5,6 +5,8 @@
     -p {{ cassandra_old_admin_password }}
     -e "CREATE ROLE IF NOT EXISTS {{ cassandra_admin_user }} WITH SUPERUSER = true;"
     {{ cassandra_local_hostname }}
+  ignore_errors: true  
+  register: cassandra_new_admin  
   retries: 5
 
 - name: Set admin login and password
@@ -13,6 +15,7 @@
     -p {{ cassandra_old_admin_password }}
     -e "ALTER ROLE {{ cassandra_admin_user }} WITH PASSWORD = '{{ cassandra_admin_password }}' AND LOGIN = true;"
     {{ cassandra_local_hostname }}
+  when: cassandra_new_admin == true
 
 # cassandra password changes are not always immediate. If password change occurs before replication factor is set...
 # do it again with the new login credentials.
@@ -22,5 +25,6 @@
     -p {{ cassandra_admin_password }}
     -e "DROP ROLE {{ cassandra_old_admin_password }} ;"
     {{ cassandra_local_hostname }}
-  register: replication_result
+  when: cassandra_new_admin == true  
   run_once: true
+  
