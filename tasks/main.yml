@@ -83,9 +83,9 @@
     owner: root
     group: root
     mode: 0755
-  # notify: 
-  #   - stop cassandra service
-  #   - start cassandra service
+  notify: 
+    - stopped_cassandra
+    - started_cassandra
      
 - name: Enable the daemon
   shell: update-rc.d cassandra "{{ item }}"
@@ -93,20 +93,17 @@
     - "defaults"
     - "enable"
 
-- name: stop cassandra service
-  service:
-    name: cassandra 
-    state: stopped
+# - name: stop cassandra service
+#   service:
+#     name: cassandra 
+#     state: stopped
     
-- name: start cassandra service
-  service:
-    name: cassandra 
-    state: started
+# - name: start cassandra service
+#   service:
+#     name: cassandra 
+#     state: started
 
-#- name: flush handlers
-#-  meta: flush_handlers
-      #- stop cassandra service
-      #- start cassandra service
+-  meta: flush_handlers
 
 - name: Include cluster status check
   include_tasks: cluster_status.yml
