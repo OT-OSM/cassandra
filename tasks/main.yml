@@ -103,7 +103,7 @@
 #     name: cassandra 
 #     state: started
 
--  meta: flush_handlers
+- meta: flush_handlers
 
 - name: Include cluster status check
   include_tasks: cluster_status.yml
