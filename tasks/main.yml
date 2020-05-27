@@ -75,6 +75,9 @@
     owner: "{{ user_name }}"
     group: "{{ group_name }}"
     mode: 0755
+  notify: 
+    - stopped_cassandra
+    - started_cassandra    
   
 - name: copy the startup script
   template: 
@@ -93,18 +96,9 @@
     - "defaults"
     - "enable"
 
-# - name: stop cassandra service
-#   service:
-#     name: cassandra 
-#     state: stopped
-    
-# - name: start cassandra service
-#   service:
-#     name: cassandra 
-#     state: started
-
--  meta: flush_handlers
-
+- name: Force all notified handlers to run at this point
+  meta: flush_handlers
+         
 - name: Include cluster status check
   include_tasks: cluster_status.yml
 

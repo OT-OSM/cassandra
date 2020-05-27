@@ -31,7 +31,7 @@ cassandra_admin_user: admin
 cassandra_admin_password: admin
 cassandra_old_admin_password: cassandra
 cassandra_old_admin_user: cassandra
-authorization_enable: "no"
+authorization_enable: "yes"
 
 #Port configurations
 cassandra_port: 9042
