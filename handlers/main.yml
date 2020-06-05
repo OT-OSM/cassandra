@@ -1,7 +1,7 @@
 ---
 - name: stopped_cassandra
   service:
-    name: cassandras
+    name: cassandra
     state: stopped
 
 - name: started_cassandra

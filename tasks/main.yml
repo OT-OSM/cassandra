@@ -90,7 +90,7 @@
     - stopped_cassandra
     - started_cassandra
 
-- name: Enable the daemon
+- name: Enable_daemon
   shell: update-rc.d cassandra "{{ item }}"
   with_items:
     - "defaults"

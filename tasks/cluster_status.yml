@@ -1,10 +1,4 @@
 ---
-- name: CheckClusterStatus
-  shell: "{{ cassandra_path }}/nodetool status | grep 'UN' | wc -l"
-  register: cluster_results
-  retries: 5
-  delay: 60
-
 - name: sleep for 120 seconds and continue with play
   wait_for: timeout=120
 
