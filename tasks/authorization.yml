@@ -21,6 +21,5 @@
     /opt/cassandra/bin/cqlsh -u {{ cassandra_admin_user }}
     -p {{ cassandra_admin_password }}
     -e "DROP ROLE {{ cassandra_old_admin_password }} ;"
-    {{ cassandra_local_hostname }}  
+    {{ cassandra_local_hostname }}
   run_once: true
-  
