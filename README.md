@@ -69,6 +69,11 @@ osm_cassandra
 5 directories, 10 files
 
 ```
+Future changes
+----------------
+* support for CentOS
+* create service file
+
 Example Playbook
 ----------------
 ```
