@@ -57,16 +57,17 @@ osm_cassandra
 ├── README.md
 ├── tasks
 │   ├── authorization.yml
+│   ├── cluster_status.yml
 │   ├── main.yml
 │   └── swap.yml
 ├── templates
-│   ├── cassandra.conf.j2
 │   ├── cassandra.sh
 │   └── cassandra.yaml.j2
 └── vars
     └── main.yml
 
 5 directories, 10 files
+
 ```
 Example Playbook
 ----------------
