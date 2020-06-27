@@ -7,6 +7,12 @@ Ansible Role: Cassandra_cluster
   [opstree_avatar]: https://img.cloudposse.com/150x150/https://github.com/opstree.png
 An ansible role to install cassandra cluster & standalone cassandra.
 
+Version History
+------------------
+|**Date**| **Version**| **Description**| **Changed By** |
+|----------|---------|---------------|-----------------|
+|**27 June 2020** | v0.0.1 | Initial draft | Shweta Tyagi |
+
 Supported OS
 ------------
   * Ubuntu:bionic
