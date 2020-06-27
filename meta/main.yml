@@ -12,4 +12,4 @@ galaxy_info:
   galaxy_tags:
     - cassandra
 dependencies:
-  - osm_java
+  - opstree_devops.java
