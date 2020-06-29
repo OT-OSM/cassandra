@@ -4,6 +4,7 @@
 
 - name: GetClusterStatusOutput
   shell: "{{ cassandra_path }}/nodetool status"
+  changed_when: true
   register: cluster_status
 
 - name: DisplayClusterStatusOutput

@@ -32,7 +32,7 @@
     owner: "{{ user_name }}"
     group: "{{ group_name }}"
     mode: 0755
-  when: cassandra_source_file.stat.exists == False
+  when: not cassandra_source_file.stat.exists
 
 - name: Create home directory
   file:
@@ -67,6 +67,7 @@
 
 - name: Export path
   shell: "echo 'PATH=$PATH:{{ cassandra_path }}' > /etc/profile.d/custom-path.sh && . /etc/profile.d/custom-path.sh"
+  changed_when: true
 
 - name: install the configuration file
   template:
@@ -92,6 +93,7 @@
 
 - name: Enable_daemon
   shell: update-rc.d cassandra "{{ item }}"
+  changed_when: true
   with_items:
     - "defaults"
     - "enable"
