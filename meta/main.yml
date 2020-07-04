@@ -1,9 +1,10 @@
 ---
 galaxy_info:
   author: Shweta Tyagi
-  description: Cassandra cluster/standalone setup
+  description: Apache Cassandra cluster/standalone setup
   company: Opstree Solutions
   min_ansible_version: 2.9
+  license: license (GPLv2)
   platforms:
     - name: Ubuntu
       versions:
@@ -11,5 +12,7 @@ galaxy_info:
         - bionic
   galaxy_tags:
     - cassandra
+    - database
+
 dependencies:
   - opstree_devops.java
